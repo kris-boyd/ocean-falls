@@ -1,92 +1,68 @@
-import * as React from 'react';
-import {useState, useMemo} from 'react';
-import {render} from 'react-dom';
-import Map, {
-  Marker,
-  Popup,
-  NavigationControl,
-  FullscreenControl,
-  ScaleControl,
-  GeolocateControl
-} from 'react-map-gl';
+import React, { useRef, useEffect, useState } from 'react';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
-import ControlPanel from './control-panel';
-import Pin from './pin';
+mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
 
-import CITIES from '../../.data/cities.json';
-
-const TOKEN = ''; // Set your mapbox token here
 
 export default function App() {
-  const [popupInfo, setPopupInfo] = useState(null);
 
-  const pins = useMemo(
-    () =>
-      CITIES.map((city, index) => (
-        <Marker
-          key={`marker-${index}`}
-          longitude={city.longitude}
-          latitude={city.latitude}
-          anchor="bottom"
-          onClick={e => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
-            e.originalEvent.stopPropagation();
-            setPopupInfo(city);
-          }}
-        >
-          <Pin />
-        </Marker>
-      )),
-    []
-  );
+const mapContainer = useRef(null);
+const map = useRef(null);
+const PLACES = 'of-aug-27';
+
+
+useEffect(() => {
+  if (map.current) return; // initialize map only once
+  map.current = new mapboxgl.Map({
+    container: mapContainer.current,
+    style: 'mapbox://styles/krisboyd/cl6leg7ea000w14mrkl03b1yn',
+    center: [-127.6906, 52.3518],
+    zoom: 16
+  });
+
+  
+     // Change the cursor to a pointer when the mouse is over the  layer.
+  map.current.on('mouseenter', PLACES, () => {
+  map.current.getCanvas().style.cursor = 'pointer';
+  });
+    
+  // Change it back to a pointer when it leaves.
+  map.current.on('mouseleave', PLACES, () => {
+  map.current.getCanvas().style.cursor = '';
+  });
+
+  map.current.on('click', (event) => {
+    // When the user clicks on a marker, get its information.
+    const features = map.current.queryRenderedFeatures(event.point, {
+      layers: [PLACES] // targeted layer
+      
+    });
+    if (!features.length) {
+      return;
+    }
+    const feature = features[0];
+    console.log(feature)
+    /* 
+      Create a popup, specify its options 
+      and properties, and add it to the map.
+    */
+    const popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(
+      `<a href="${feature.properties.imageUrl}"> <img  src="${feature.properties.imageUrl}" style="width:100px; height:100px" /></a>
+      <p>${feature.properties.description}</p>
+      <h3>${feature.properties.tag1}</h3>`
+    )
+    .addTo(map.current);
+      
+    });
+
+
+});
 
   return (
-    <>
-      <Map
-        initialViewState={{
-          latitude: 40,
-          longitude: -100,
-          zoom: 3.5,
-          bearing: 0,
-          pitch: 0
-        }}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        mapboxAccessToken={TOKEN}
-      >
-        <GeolocateControl position="top-left" />
-        <FullscreenControl position="top-left" />
-        <NavigationControl position="top-left" />
-        <ScaleControl />
-
-        {pins}
-
-        {popupInfo && (
-          <Popup
-            anchor="top"
-            longitude={Number(popupInfo.longitude)}
-            latitude={Number(popupInfo.latitude)}
-            onClose={() => setPopupInfo(null)}
-          >
-            <div>
-              {popupInfo.city}, {popupInfo.state} |{' '}
-              <a
-                target="_new"
-                href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${popupInfo.city}, ${popupInfo.state}`}
-              >
-                Wikipedia
-              </a>
-            </div>
-            <img width="100%" src={popupInfo.image} />
-          </Popup>
-        )}
-      </Map>
-
-      <ControlPanel />
-    </>
+    <div>
+      <div ref={mapContainer} className="map-container" />
+    </div>
   );
-}
-
-export function renderToDom(container) {
-  render(<App />, container);
 }
