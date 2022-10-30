@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './Welcome.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

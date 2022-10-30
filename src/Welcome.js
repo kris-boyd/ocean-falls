@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import stylesheet from './Welcome.css'
+
 
 ReactModal.setAppElement('#root');
 
@@ -63,6 +63,6 @@ class Welcome extends React.Component {
   }
 }
 
-const props = {};
+
 
 export default Welcome;

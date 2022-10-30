@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Welcome from './Welcome.js'
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
@@ -46,7 +46,7 @@ useEffect(() => {
       Create a popup, specify its options 
       and properties, and add it to the map.
     */
-    const popup = new mapboxgl.Popup({ offset: [0, -15] })
+   /*  const popup = new mapboxgl.Popup({ offset: [0, -15] }) */
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
       `<a href="${feature.properties.imageUrl}"> <img  src="${feature.properties.imageUrl}" style="width:100px; height:100px" /></a>
