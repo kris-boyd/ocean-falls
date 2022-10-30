@@ -46,8 +46,9 @@ useEffect(() => {
       Create a popup, specify its options 
       and properties, and add it to the map.
     */
-   /*  const popup = new mapboxgl.Popup({ offset: [0, -15] }) */
-    .setLngLat(feature.geometry.coordinates)
+    const popup = new mapboxgl.Popup({ offset: [0, -15] });
+
+    popup.setLngLat(feature.geometry.coordinates)
     .setHTML(
       `<a href="${feature.properties.imageUrl}"> <img  src="${feature.properties.imageUrl}" style="width:100px; height:100px" /></a>
       <p>${feature.properties.description}</p>
