@@ -1,0 +1,124 @@
+
+.color1 {color: #377e7c;}
+.color2 {color: #3f8c6c;}
+.color3 {color: #a2b78b;}
+.color4 {color: #d1d2aa;}
+.color5 {color: #eff5e0;}
+
+.welcomeModal {
+    position: relative;
+    display: flex;
+    background-color: #a2b78b;
+    color: black;
+    border-radius: 20px;
+  
+    width: 55rem;
+    height: 40rem;
+  
+    top: 100px;
+    margin: auto;
+    padding: 1rem 2rem;
+    outline: none;
+  }
+  
+  .bodyOpen {
+    overflow: hidden;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  
+    z-index: 100;
+    backdrop-filter: grayscale(70%);
+    background-color: hsla(0, 0, 10%, 5%);
+  }
+  
+/*   .imageContainer {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    flex-basis: 35rem * 0.666;
+    flex-shrink: 0;
+  } */
+  
+/*   .image {
+    position: absolute;
+  
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+  } */
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+  
+    flex-grow: 1;
+    height: 100%;
+    text-align: left;
+  }
+  
+  .text {
+    padding: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0;
+    flex-grow: 1;
+  
+    overflow: hidden;
+  }
+  
+    .text h1, h2 {
+      text-align: center;
+      font-size: 36px;
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+    .text h2 {
+      font-size: 30px;
+    }
+  
+    .text hr {
+      
+      display: block;
+      border: none;
+      border-top: 1px solid black;
+      width: em;
+      margin: auto;
+    }
+  
+    .text a {
+      color: inherit;
+    }
+  
+    .text p {
+      line-height: 1.6;
+      margin: 1.5rem 0;
+    }
+  
+  
+  .finePrint {
+    font-size: 12px;
+  }
+  
+  .buttonContainer {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .explore {
+    display: inline-block;
+  
+    padding: 1rem 2rem;
+    font-size: 16px;
+    background-color: #3f8c6c;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
