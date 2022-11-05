@@ -1,36 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactModal from 'react-modal';
 
 
 ReactModal.setAppElement('#root');
 
-class Welcome extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      showModal: true
-    };
-    
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
+function Welcome(props) {
   
-  handleOpenModal () {
-    this.setState({ showModal: true });
-  }
+  const [showModal, setShowModal] = useState(true);
+
+  /* const handleOpenModal = () => {
+    setShowModal(true);
+  }; */
   
-  handleCloseModal () {
-    this.setState({ showModal: false });
-  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   
-  render () {
+ 
     return (  
         <ReactModal 
-           isOpen={this.state.showModal}
+           isOpen={showModal}
            className="welcomeModal"
            bodyOpenClassName="bodyOpen"
            contentLabel="onRequestClose Example"
-           onRequestClose={this.handleCloseModal}
+           onRequestClose={handleCloseModal}
         >
           <div className="textContainer">
             <div className="text">
@@ -54,13 +47,13 @@ class Welcome extends React.Component {
               </p>
             </div>
               <div  class="buttonContainer">
-                <button onClick={this.handleCloseModal} class="explore">Start Exploring</button>
+                <button onClick={handleCloseModal} class="explore">Start Exploring</button>
               </div>
           </div>
           
         </ReactModal>
     );
-  }
+  
 }
 
 
