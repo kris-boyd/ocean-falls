@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-import Welcome from './Welcome.js'
+import WelcomeModal from './WelcomeModal.js'
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
 
 
@@ -61,10 +61,11 @@ useEffect(() => {
 
 });
 
+
   return (
     <div>
       <div ref={mapContainer} className="map-container" />
-      <Welcome />
+      <WelcomeModal />
     </div>
   );
 }
