@@ -8,18 +8,16 @@ export default function ImageModal (props) {
     <Modal
       {...props}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
+      aria-labelledby="image modal"
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        The image name
+        {props.description}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={props.image} alt="some kittens" />
-          <p>some text about the image</p>
-          <p>{props.image}</p>
+        <img src={props.image} alt={props.description} />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Start Exploring</Button>

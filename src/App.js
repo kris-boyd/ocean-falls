@@ -12,6 +12,7 @@ const map = useRef(null);
 const PLACES = 'of-aug-27';
 const [modalShow, setModalShow] = React.useState(false);
 const [modalImage, setModalImage] = React.useState("");
+const [modalDescription, setModalDescription] = React.useState("");
 
 useEffect(() => {
   if (map.current) return; // initialize map only once
@@ -40,9 +41,9 @@ const popup = new mapboxgl.Popup({
    
   // Populate the popup and set its coordinates
   // based on the feature found.
-  popup.setLngLat(feature.geometry.coordinates).setHTML(`<a href="${feature.properties.imageUrl}"> <img  src="${feature.properties.imageUrl}" style="width:100px; height:100px" /></a>
-  <p>${feature.properties.description}</p>
-  <h3>${feature.properties.tag1}</h3>`).addTo(map.current);
+  popup.setLngLat(feature.geometry.coordinates).setHTML(`<a href="${feature.properties.imageUrl}"> <img  src="${feature.properties.imageUrl}" style="width:200px" /></a>
+  <p>${feature.properties.description}</p>`)
+  .addTo(map.current);
   });
    
   //change the cursor back to default and remove the popup
@@ -51,12 +52,12 @@ const popup = new mapboxgl.Popup({
   popup.remove();
   });
 
+    // open a modal to show large image when the marker is clicked
   map.current.on('click', PLACES, (e) => {
-
     const clickFeature = e.features[0];
     setModalShow(true);
     setModalImage(clickFeature.properties.imageUrl);
-    console.log(clickFeature.properties.imageUrl);
+    setModalDescription(clickFeature.properties.description);
   });
 
 });
@@ -69,6 +70,8 @@ const popup = new mapboxgl.Popup({
       <ImageModal 
         show={modalShow}
         image={modalImage}
+        description={modalDescription}
+        fullscreen={true}
         onHide={() => setModalShow(false)}
       />
       
