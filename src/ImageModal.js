@@ -10,14 +10,16 @@ export default function ImageModal (props) {
       size="lg"
       aria-labelledby="image modal"
       centered
+      contentClassName='container text-center'
+      dialogClassName='container text-center'
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="contained-modal-title-vcenter-center" className='justify-content-center'>
         {props.description}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={props.image} alt={props.description} />
+        <img src={props.image} alt={props.description} height="100%"/>
       </Modal.Body>
       <Modal.Footer>
     
