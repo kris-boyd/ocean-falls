@@ -20,7 +20,7 @@ export default function ImageModal (props) {
         <img src={props.image} alt={props.description} />
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Start Exploring</Button>
+    
       </Modal.Footer>
     </Modal>
   );
