@@ -13,6 +13,7 @@ const PLACES = 'of-aug-27';
 const [modalShow, setModalShow] = React.useState(false);
 const [modalImage, setModalImage] = React.useState("");
 const [modalDescription, setModalDescription] = React.useState("");
+const [modalTag1, setModalTag1] = React.useState("");
 
 useEffect(() => {
   if (map.current) return; // initialize map only once
@@ -58,6 +59,7 @@ const popup = new mapboxgl.Popup({
     setModalShow(true);
     setModalImage(clickFeature.properties.imageUrl);
     setModalDescription(clickFeature.properties.description);
+    setModalTag1(clickFeature.properties.tag1);
   });
 
 });
@@ -71,7 +73,8 @@ const popup = new mapboxgl.Popup({
         show={modalShow}
         image={modalImage}
         description={modalDescription}
-        fullscreen={true}
+        tag1={modalTag1}
+        /* fullscreen={true} */
         onHide={() => setModalShow(false)}
       />
       
