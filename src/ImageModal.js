@@ -1,17 +1,18 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
 
 export default function ImageModal (props) {
   return (
     <Modal
       {...props}
-      /* size="lg" */
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      fullscreen={true}
       
-      dialogClassName='modal-90w'
+      
     >
       <Modal.Header closeButton >
         <Modal.Title id="contained-modal-title-vcenter" className='ms-auto'>
@@ -19,10 +20,7 @@ export default function ImageModal (props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Container>
-          <img src={props.image} alt={props.description} style ={{height: "100%"}} />
-        </Container>
-        
+        <Image  src={props.image} alt={props.description} style={{ display: "block", maxHeight:"100%", marginLeft: "auto", marginRight: "auto" }}></Image>
       </Modal.Body>
       <Modal.Footer>
     <p>Tag: {props.tag1}</p>
