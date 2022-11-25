@@ -44,6 +44,7 @@ useEffect(() => {
 
     });
     if (!features.length) {
+      popup.remove();
       return;
     }
     const feature = features[0];
@@ -55,22 +56,27 @@ useEffect(() => {
 
     popup.setLngLat(feature.geometry.coordinates)
     .setHTML(
-      `<img  src="${feature.properties.imageUrl}" style="width:200px" />
+      `<img  src="${feature.properties.imageUrl}" style="width:200px" class="popupImage"/>
       <h3>${feature.properties.description}</h3>`
     )
     .addTo(map.current);
 
+    
+        // open a modal to show large image when the marker is clicked
+    const openModal = () => {
+      const clickFeature = feature;
+      setModalShow(true);
+      setModalImage(clickFeature.properties.imageUrl);
+      setModalDescription(clickFeature.properties.description);
+      setModalTag1(clickFeature.properties.tag1);
+    };
+    document.querySelector('img').addEventListener('click', openModal);
     });
  
 
-    // open a modal to show large image when the marker is clicked
-  popup.on('click', PLACES, (e) => {
-    const clickFeature = e.features[0];
-    setModalShow(true);
-    setModalImage(clickFeature.properties.imageUrl);
-    setModalDescription(clickFeature.properties.description);
-    setModalTag1(clickFeature.properties.tag1);
-  });
+  
+
+
 
 });
 
