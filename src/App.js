@@ -2,7 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import WelcomeModal from './WelcomeModal.js'
 import ImageModal from './ImageModal.js'
+
+
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
+
 
 
 export default function App() {
