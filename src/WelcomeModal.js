@@ -15,7 +15,7 @@ function VerticallyCenteredModal (props) {
         Ocean Falls: the memory of a community
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className='welcomeModal-body'>
         <h4>A community is a place and an idea.</h4>
         <p>
                 Ocean Falls was a company town created in 1909 around a paper mill at the site of a seasonal Heiltsuk

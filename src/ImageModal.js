@@ -7,10 +7,13 @@ export default function ImageModal (props) {
   return (
     <Modal
       {...props}
-      size="lg"
+    
       aria-labelledby="contained-modal-title-vcenter"
       centered
       fullscreen={true}
+      dialogClassName="modal-fullscreen-xl-down modal-95w mx-auto"
+      
+      
       
       
     >
@@ -20,7 +23,7 @@ export default function ImageModal (props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Image  src={props.image} alt={props.description} style={{ display: "block", maxHeight:"100%", marginLeft: "auto", marginRight: "auto" }}></Image>
+        <Image  className="mh-100" src={props.image} alt={props.description} ></Image>
       </Modal.Body>
       <Modal.Footer>
     <p>Tag: {props.tag1}</p>
