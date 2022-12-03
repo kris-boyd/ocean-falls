@@ -3,6 +3,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import WelcomeModal from './WelcomeModal.js';
 import ImageModal from './ImageModal.js';
 import Button from 'react-bootstrap/Button';
+import AboutModal from './AboutModal';
 
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
@@ -14,10 +15,15 @@ export default function App() {
 const mapContainer = useRef(null);
 const map = useRef(null);
 const PLACES = 'of-aug-27';
+
+//ImageModal state
 const [modalShow, setModalShow] = React.useState(false);
 const [modalImage, setModalImage] = React.useState("");
 const [modalDescription, setModalDescription] = React.useState("");
 const [modalTag1, setModalTag1] = React.useState("");
+
+//AboutModal state
+const [aboutModalShow, setAboutModalShow] = React.useState(false);
 
 useEffect(() => {
   if (map.current) return; // initialize map only once
@@ -77,8 +83,11 @@ useEffect(() => {
     document.querySelector('img').addEventListener('click', openModal);
     });
  
-
-  
+// open AboutModal when about button clicked
+    const openAboutModal = () => {
+      setAboutModalShow(true);
+    }
+  document.querySelector('.button-about').addEventListener('click', openAboutModal);
 
 
 
@@ -88,8 +97,8 @@ useEffect(() => {
   return (
     <div>
       <div ref={mapContainer} className="map-container">
-      <Button  className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
         </div>
+        <Button  className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
       
       <WelcomeModal />
       <ImageModal 
@@ -97,8 +106,11 @@ useEffect(() => {
         image={modalImage}
         description={modalDescription}
         tag1={modalTag1}
-        /* fullscreen={true} */
         onHide={() => setModalShow(false)}
+      />
+      <AboutModal 
+        show={aboutModalShow}
+        onHide={() => setAboutModalShow(false)}
       />
       
     </div>

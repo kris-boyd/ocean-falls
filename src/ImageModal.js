@@ -11,11 +11,7 @@ export default function ImageModal (props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       fullscreen={true}
-      dialogClassName="modal-fullscreen-xl-down modal-95w mx-auto"
-      
-      
-      
-      
+      dialogClassName="modal-fullscreen-xl-down modal-95w mx-auto" 
     >
       <Modal.Header closeButton >
         <Modal.Title id="contained-modal-title-vcenter" className='ms-auto'>

@@ -11,7 +11,7 @@ function VerticallyCenteredModal (props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title >
         Ocean Falls: the memory of a community
         </Modal.Title>
       </Modal.Header>
