@@ -16,6 +16,12 @@ const mapContainer = useRef(null);
 const map = useRef(null);
 const PLACES = 'of-aug-27';
 
+// Set bounds to Ocean falls historic map only
+const BOUNDS = [
+  [-127.7312, 52.3416], // Southwest coordinates
+  [-127.67320, 52.36770] // Northeast coordinates
+  ];
+
 //ImageModal state
 const [modalShow, setModalShow] = React.useState(false);
 const [modalImage, setModalImage] = React.useState("");
@@ -30,8 +36,9 @@ useEffect(() => {
   map.current = new mapboxgl.Map({
     container: mapContainer.current,
     style: 'mapbox://styles/krisboyd/cl6leg7ea000w14mrkl03b1yn',
-    center: [-127.6906, 52.3518],
-    zoom: 16
+    center: [-127.6906, 52.3518], //starting position
+    zoom: 16, //starting zoom
+    maxBounds: BOUNDS // Set the map's geographical boundaries
   });
 
   const popup = new mapboxgl.Popup({
