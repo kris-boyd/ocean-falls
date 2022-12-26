@@ -41,6 +41,7 @@ useEffect(() => {
     maxBounds: BOUNDS // Set the map's geographical boundaries
   });
 
+  // add zoom controls to map
   map.current.addControl(new mapboxgl.NavigationControl({showCompass: false}),'top-left');
 
   const popup = new mapboxgl.Popup({
