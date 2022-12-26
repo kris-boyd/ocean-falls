@@ -41,7 +41,7 @@ useEffect(() => {
     maxBounds: BOUNDS // Set the map's geographical boundaries
   });
 
-  
+  map.current.addControl(new mapboxgl.NavigationControl({showCompass: false}),'top-left');
 
   const popup = new mapboxgl.Popup({
     closeOnClick: false, offset: [0, -15] });
