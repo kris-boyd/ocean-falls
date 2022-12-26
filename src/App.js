@@ -41,6 +41,8 @@ useEffect(() => {
     maxBounds: BOUNDS // Set the map's geographical boundaries
   });
 
+  
+
   const popup = new mapboxgl.Popup({
     closeOnClick: false, offset: [0, -15] });
 
