@@ -1,7 +1,5 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'react-bootstrap/Image';
-
 
 export default function ImageModal (props) {
   return (
@@ -18,8 +16,7 @@ export default function ImageModal (props) {
         {props.description}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Image  className="mh-100" src={props.image} alt={props.description} ></Image>
+      <Modal.Body style={{background: `no-repeat center/contain url(${props.image})`}}>
       </Modal.Body>
       <Modal.Footer>
     <p>Tag: {props.tag1}</p>
