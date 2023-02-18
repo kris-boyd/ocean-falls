@@ -106,8 +106,8 @@ useEffect(() => {
 
   return (
     <div>
-      <div ref={mapContainer} className="map-container">
-        </div>
+      <div ref={mapContainer} className="map-container"></div>
+      <div id="static"></div>
         <Button  className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
       
       <WelcomeModal />
