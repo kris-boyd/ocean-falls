@@ -14,9 +14,9 @@ export default function App() {
 
 const mapContainer = useRef(null);
 const map = useRef(null);
-const PLACES = 'of-feb-20';
+const PLACES = 'of-feb-20'; // name of mapbox style layer with photo metadata
 
-// Set bounds to Ocean falls historic map only
+// Set bounds to Ocean falls historic map only  ##TODO adjust bounds to tighter limits
 const BOUNDS = [
   [-127.7312, 52.3416], // Southwest coordinates
   [-127.67320, 52.36770] // Northeast coordinates
@@ -38,7 +38,9 @@ useEffect(() => {
     style: 'mapbox://styles/krisboyd/cl6leg7ea000w14mrkl03b1yn',
     center: [-127.6906, 52.3518], //starting position
     zoom: 16, //starting zoom
-    maxBounds: BOUNDS // Set the map's geographical boundaries
+    maxBounds: BOUNDS, // Set the map's geographical boundaries
+    bearing: 0.85,
+    bearingSnap: 0,
   });
 
   // add zoom controls to map
