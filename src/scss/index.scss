@@ -3,6 +3,16 @@
 .map-container {
     height: 100vh;
     width: 100vw;
+    /* visibility: hidden; */
+  }
+
+  #static {
+    background-image: url("https://api.mapbox.com/styles/v1/krisboyd/cl6leg7ea000w14mrkl03b1yn/static/-127.6906,52.3518,16/900x800?access_token=pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q");
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+   
   }
 
  .modal-95w {

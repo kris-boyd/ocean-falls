@@ -14,7 +14,7 @@ export default function App() {
 
 const mapContainer = useRef(null);
 const map = useRef(null);
-const PLACES = 'of-aug-27';
+const PLACES = 'of-feb-20';
 
 // Set bounds to Ocean falls historic map only
 const BOUNDS = [
@@ -38,6 +38,8 @@ useEffect(() => {
     style: 'mapbox://styles/krisboyd/cl6leg7ea000w14mrkl03b1yn',
     center: [-127.6906, 52.3518], //starting position
     zoom: 16, //starting zoom
+    bearing: 0.85,
+    bearingSnap: 0,
     maxBounds: BOUNDS // Set the map's geographical boundaries
   });
 
@@ -80,8 +82,6 @@ useEffect(() => {
       <h3>${feature.properties.description}</h3>`
     )
     .addTo(map.current);
-
-    
         // open a modal to show large image when the marker is clicked
     const openModal = () => {
       const clickFeature = feature;
@@ -98,16 +98,13 @@ useEffect(() => {
       setAboutModalShow(true);
     }
   document.querySelector('.button-about').addEventListener('click', openAboutModal);
-
-
-
 });
-
 
   return (
     <div>
-      <div ref={mapContainer} className="map-container">
-        </div>
+      <div id="static"></div>
+      <div ref={mapContainer} className="map-container"></div>
+      
         <Button  className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
       
       <WelcomeModal />
@@ -121,8 +118,7 @@ useEffect(() => {
       <AboutModal 
         show={aboutModalShow}
         onHide={() => setAboutModalShow(false)}
-      />
-      
+      /> 
     </div>
   );
 }
