@@ -14,7 +14,7 @@ export default function App() {
 
 const mapContainer = useRef(null);
 const map = useRef(null);
-const PLACES = 'of-aug-27';
+const PLACES = 'of-feb-20';
 
 // Set bounds to Ocean falls historic map only
 const BOUNDS = [
