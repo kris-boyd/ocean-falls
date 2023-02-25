@@ -14,7 +14,7 @@ export default function App() {
 
 const mapContainer = useRef(null);
 const map = useRef(null);
-const PLACES = 'of-feb-20'; // name of mapbox style layer with photo metadata
+const PLACES = 'of-feb-25'; // name of mapbox style layer with photo metadata
 
 // Set bounds to Ocean falls historic map only  ##TODO adjust bounds to tighter limits
 const BOUNDS = [
