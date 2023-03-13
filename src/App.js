@@ -4,11 +4,12 @@ import WelcomeModal from './WelcomeModal.js';
 import ImageModal from './ImageModal.js';
 import Button from 'react-bootstrap/Button';
 import AboutModal from './AboutModal';
-
+import useWindowDimensions from './useWindowDimensions';
+import optimizedDimensions from './optimizedDimensions';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q';
 
-
+// TODO: look into formatting using prettier for automatic formatting
 
 export default function App() {
 
@@ -39,8 +40,8 @@ useEffect(() => {
     center: [-127.6906, 52.3518], //starting position
     zoom: 16, //starting zoom
     maxBounds: BOUNDS, // Set the map's geographical boundaries
-    bearing: 0.85,
-    bearingSnap: 0,
+    bearing: 0.85, //rotate the map slightly to appear more level
+    bearingSnap: 0, // don't snap back to bearing 0 when zooming
   });
 
   // add zoom controls to map
@@ -49,7 +50,7 @@ useEffect(() => {
   const popup = new mapboxgl.Popup({
     closeOnClick: false, offset: [0, -15] });
 
-  // Change the cursor to a pointer when the mouse is over the  layer.
+  // Change the cursor to a pointer when the mouse is over a marker on the style layer.
   map.current.on('mouseenter', PLACES, (e) => {
   map.current.getCanvas().style.cursor = 'pointer';
   });
@@ -100,12 +101,26 @@ useEffect(() => {
   document.querySelector('.button-about').addEventListener('click', openAboutModal);
 });
 
+  const { width: originalWidth, height: originalHeight }  = useWindowDimensions();
+  const { width, height } = optimizedDimensions({ width: originalWidth, height: originalHeight });
+
+  // TODO: split mapbox into its own child component
+
   return (
     <div>
-      <div id="static"></div>
+      <div style={{
+          backgroundImage: `url('https://api.mapbox.com/styles/v1/krisboyd/cl6leg7ea000w14mrkl03b1yn/static/-127.6906,52.3518,16/${width}x${height}?access_token=pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q')`, 
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          height: "100vh",
+          width: "100vw",
+          position: "absolute",
+          top: 0,
+          
+        }}></div>
       <div ref={mapContainer} className="map-container"></div>
       
-        <Button  className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
+        <Button className="button-about position-absolute top-0 end-0 mt-2 me-2" variant="primary">About</Button>
       
       <WelcomeModal />
       <ImageModal 
