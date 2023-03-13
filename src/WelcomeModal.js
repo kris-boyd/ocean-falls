@@ -31,7 +31,7 @@ function VerticallyCenteredModal (props) {
                 Falls and its place in the world with a larger public.</p>
                 
                 <hr/>
-              <p>This map was created from a combination of historical sources(get summary from Chris).  Each dot represents a photo, text, or video connected to that location.  Created by <a href='http://mediumlight.com'>Christopher Grabowski</a>, Kathleen Flaherty and Kris Boyd
+              <p>This map was created from a combination of historical sources.  Each dot represents a photo, text, or video connected to that location.  Created by <a href='http://mediumlight.com'>Christopher Grabowski</a>, Kathleen Flaherty and Kris Boyd
               </p>
       </Modal.Body>
       <Modal.Footer>
