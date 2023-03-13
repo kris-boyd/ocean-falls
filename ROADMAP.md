@@ -11,3 +11,5 @@
 - set boundaries to show only custom map
 - get updated content for AboutModal
 - update content on WelcomeModal
+- install Prettier as dependency
+
