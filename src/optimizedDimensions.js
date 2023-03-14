@@ -2,7 +2,7 @@
 const MAPBOX_SIZE_LIMIT = 1280;
 
 const optimizedDimensions = ({ width, height }) => {
-  const ratio = width/height;
+  const ratio = width / height;
 
   if (width > MAPBOX_SIZE_LIMIT) {
     width = MAPBOX_SIZE_LIMIT;
