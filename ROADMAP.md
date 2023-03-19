@@ -1,6 +1,6 @@
 TODO
 
-- make map container into react component
+- complete skipped tests
 - optimize image delivery
 - create server to allow content additions
 - add banner image to WelcomeModal
@@ -15,3 +15,4 @@ DONE
 - make static map into a react component
 - have optimizedDimensions handle oversize height
 - create automated tests for Optimized
+- make map container into react component
