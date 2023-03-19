@@ -4,6 +4,7 @@ import WelcomeModal from "./WelcomeModal.js";
 import ImageModal from "./ImageModal.js";
 import Button from "react-bootstrap/Button";
 import AboutModal from "./AboutModal";
+import StaticMap from "./StaticMap.js";
 import useWindowDimensions from "./useWindowDimensions";
 import optimizedDimensions from "./optimizedDimensions";
 
@@ -88,6 +89,7 @@ export default function App() {
       <h3>${feature.properties.description}</h3>`
         )
         .addTo(map.current);
+
       // open a modal to show large image when the marker is clicked
       const openModal = () => {
         const clickFeature = feature;
@@ -108,6 +110,7 @@ export default function App() {
       .addEventListener("click", openAboutModal);
   });
 
+  // get width and height of the viewport
   const { width: originalWidth, height: originalHeight } =
     useWindowDimensions();
   const { width, height } = optimizedDimensions({
@@ -119,17 +122,8 @@ export default function App() {
 
   return (
     <div>
-      <div
-        style={{
-          backgroundImage: `url('https://api.mapbox.com/styles/v1/krisboyd/cl6leg7ea000w14mrkl03b1yn/static/-127.6906,52.3518,16/${width}x${height}?access_token=pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q')`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          height: "100vh",
-          width: "100vw",
-          position: "absolute",
-          top: 0,
-        }}
-      ></div>
+      <StaticMap width={width} height={height}></StaticMap>
+
       <div ref={mapContainer} className="map-container"></div>
 
       <Button

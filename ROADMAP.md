@@ -13,3 +13,4 @@ TODO
 DONE
 
 - install Prettier as dependency and set to format on save
+- make static map into a react component
