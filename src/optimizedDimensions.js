@@ -9,8 +9,10 @@ const optimizedDimensions = ({ width, height }) => {
     height = Math.round(width / ratio);
   }
 
-  // TODO: handle height bigger than 1280
-
+  if (height > MAPBOX_SIZE_LIMIT) {
+    height = MAPBOX_SIZE_LIMIT;
+    width = Math.round(height * ratio);
+  }
   return { width, height };
 };
 
