@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Modal, Button, Image } from "react-bootstrap";
+import bannerImage from "./images/ariel_cu_banner.jpg";
 
 function VerticallyCenteredModal(props) {
   return (
@@ -14,6 +14,7 @@ function VerticallyCenteredModal(props) {
         <Modal.Title>Ocean Falls: the memory of a community</Modal.Title>
       </Modal.Header>
       <Modal.Body className="welcomeModal-body">
+        <Image src={bannerImage} fluid></Image>
         <h4>A community is a place and an idea.</h4>
         <p>
           Ocean Falls was a company town created in 1909 around a paper mill at
