@@ -19,7 +19,7 @@ export default function ImageModal(props) {
         style={{ background: `no-repeat center/contain url(${props.image})` }}
       ></Modal.Body>
       <Modal.Footer>
-        <p>Tag: {props.tag1}</p>
+        <p> {props.description}</p>
       </Modal.Footer>
     </Modal>
   );
