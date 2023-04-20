@@ -4,7 +4,7 @@ import WelcomeModal from "./WelcomeModal.js";
 import ImageModal from "./ImageModal.js";
 import Button from "react-bootstrap/Button";
 import AboutModal from "./AboutModal";
-import StaticMap from "./StaticMap.js";
+import StaticMap from "./StaticMap.tsx";
 import useWindowDimensions from "./useWindowDimensions";
 import optimizedDimensions from "./optimizedDimensions";
 

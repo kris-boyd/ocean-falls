@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export default function About(props) {
+export default function About(props: IAboutProps): JSX.Element {
   return (
     <Modal {...props} size="lg" aria-labelledby="About" centered>
       <Modal.Header closeButton>
