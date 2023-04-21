@@ -1,14 +1,14 @@
 import React from "react";
 import Map from "./Map.js";
-import WelcomeModal from "./WelcomeModal.js";
-import ImageModal from "./ImageModal.js";
+import WelcomeModal from "./WelcomeModal.tsx";
+import ImageModal from "./ImageModal.tsx";
 import Button from "react-bootstrap/Button";
-import AboutModal from "./AboutModal";
+import AboutModal from "./AboutModal.tsx";
 import StaticMap from "./StaticMap.tsx";
-import useWindowDimensions from "./useWindowDimensions";
-import optimizedDimensions from "./optimizedDimensions";
+import useWindowDimensions from "./useWindowDimensions.ts";
+import optimizedDimensions from "./optimizedDimensions.ts";
 
-export default function App() {
+export default function App(): JSX.Element {
   //ImageModal state
   const [modalShow, setModalShow] = React.useState(false);
   const [modalImage, setModalImage] = React.useState("");
@@ -18,8 +18,8 @@ export default function App() {
   //AboutModal state
   const [aboutModalShow, setAboutModalShow] = React.useState(false);
 
-  const openImageModal = (feature) => {
-    const clickFeature = feature;
+  const openImageModal = (feature: IFeature): void => {
+    const clickFeature: IFeature = feature;
 
     setModalShow(true);
     setModalImage(clickFeature.properties.imageUrl);
