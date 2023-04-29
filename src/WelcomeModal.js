@@ -13,7 +13,7 @@ function VerticallyCenteredModal(props) {
       <Modal.Header closeButton>
         <Modal.Title>Ocean Falls: the memory of a community</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="welcomeModal-body">
+      <Modal.Body className="welcome-modal-body">
         <Image src={bannerImage} fluid></Image>
         <h4>A community is a place and an idea.</h4>
         <p>
@@ -45,7 +45,9 @@ function VerticallyCenteredModal(props) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Start Exploring</Button>
+        <Button className="welcome-modal-button" onClick={props.onHide}>
+          Start Exploring
+        </Button>
       </Modal.Footer>
     </Modal>
   );
