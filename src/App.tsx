@@ -1,12 +1,12 @@
 import React from "react";
-import Map from "./Map.js";
-import WelcomeModal from "./WelcomeModal.tsx";
-import ImageModal from "./ImageModal.tsx";
+import Map from "./Map";
+import WelcomeModal from "./WelcomeModal";
+import ImageModal from "./ImageModal";
 import Button from "react-bootstrap/Button";
-import AboutModal from "./AboutModal.tsx";
-import StaticMap from "./StaticMap.tsx";
-import useWindowDimensions from "./useWindowDimensions.ts";
-import optimizedDimensions from "./optimizedDimensions.ts";
+import AboutModal from "./AboutModal";
+import StaticMap from "./StaticMap";
+import useWindowDimensions from "./useWindowDimensions";
+import optimizedDimensions from "./optimizedDimensions";
 
 export default function App(): JSX.Element {
   //ImageModal state

@@ -15,6 +15,9 @@ interface IWelcomeProps {
 interface IImageProps {
   description: string;
   image: string;
+  show: boolean;
+  tag1: string;
+  onHide: () => void;
 }
 interface IFeature {
   properties: {
@@ -29,4 +32,10 @@ interface IFeature {
 declare module '*.jpg' {
   const value: any;
   export = value;
+}
+
+declare module '!mapbox-gl' {
+  export interface Imap {
+
+  }
 }

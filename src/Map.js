@@ -79,5 +79,9 @@ export default function Map({ onPopupImageClick }) {
     });
   }, [onPopupImageClick]);
 
-  return <div ref={mapContainer} className="map-container"></div>;
+  return (
+    <div ref={mapContainer} className="map-container">
+      {" "}
+    </div>
+  );
 }
