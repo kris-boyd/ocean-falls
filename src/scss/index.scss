@@ -1,5 +1,15 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('/public/fonts/Lato-Regular.ttf') format('truetype');
+  
+}
+
+body {
+  font-family: 'Lato-Regular', sans-serif;
+}
+
 .map-container {
     height: 100vh;
     width: 100vw;
@@ -36,5 +46,4 @@
  .btn {
   background-color: #34462E;
   border-color: black;
-
  }
