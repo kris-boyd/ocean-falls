@@ -66,8 +66,9 @@ export default function Map({ onPopupImageClick }) {
     */
       popup
         .setLngLat(feature.geometry.coordinates)
+        .setMaxWidth("320px")
         .setHTML(
-          `<img  src="${feature.properties.imageUrl}" style="width:200px" class="popupImage"/>
+          `<img  src="${feature.properties.imageUrl}" style="width:280px" class="popupImage"/>
       <h3>${feature.properties.description}</h3>`
         )
         .addTo(map.current);
