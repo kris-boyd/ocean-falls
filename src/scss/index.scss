@@ -25,7 +25,7 @@ body {
   }
 
  .modal-95w {
-  width: 97%;
+  width: 95%;
   max-width: none !important;
   height: 95%;
   max-height: none !important;
@@ -37,6 +37,10 @@ body {
 
  .modal-content {
   background-color: #99A787;
+ }
+
+ .transparent-backdrop {
+  background-color: transparent;
  }
 
  .welcome-modal-image {

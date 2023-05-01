@@ -9,6 +9,7 @@ function VerticallyCenteredModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      backdropClassName="transparent-backdrop"
     >
       <Modal.Header closeButton>
         <Modal.Title>Ocean Falls: the memory of a community</Modal.Title>
