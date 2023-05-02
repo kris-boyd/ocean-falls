@@ -16,7 +16,9 @@ export default function ImageModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
-        style={{ background: `no-repeat center/contain url(${props.image})` }}
+        style={{
+          background: `no-repeat center/contain url(https://res.cloudinary.com/daqq3q1oz/image/upload/${props.image})`,
+        }}
       ></Modal.Body>
       <Modal.Footer>
         <p> {props.description}</p>

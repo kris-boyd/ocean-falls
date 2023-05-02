@@ -22,7 +22,7 @@ export default function App() {
     const clickFeature = feature;
 
     setModalShow(true);
-    setModalImage(clickFeature.properties.imageUrl);
+    setModalImage(clickFeature.properties.fileName);
     setModalDescription(clickFeature.properties.description);
     setModalTag1(clickFeature.properties.tag1);
   };
