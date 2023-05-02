@@ -68,9 +68,16 @@ export default function Map({ onPopupImageClick }) {
         .setLngLat(feature.geometry.coordinates)
         .setMaxWidth("320px")
         .setHTML(
-          `<p>click image to enlarge</p>
-          <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>
-      <h3>${feature.properties.description}</h3>`
+          `<div> 
+            
+            ${
+              feature.properties.fileName
+                ? `<p>click image to enlarge</p> 
+                <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>`
+                : ""
+            }
+            <h3>${feature.properties.description}</h3> 
+          <div>`
         )
         .addTo(map.current);
 
