@@ -12,7 +12,7 @@ export default function ImageModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="ms-auto">
-          {props.description}
+          {props.tag1}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
