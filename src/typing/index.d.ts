@@ -34,7 +34,8 @@ declare module '*.jpg' {
   export = value;
 }
 
-declare module '!mapbox-gl' {
+declare module 'mapbox-gl' {
+
   export interface Imap {
 
   }

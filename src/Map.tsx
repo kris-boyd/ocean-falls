@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from "mapbox-gl"; /* // eslint-disable-line import/no-webpack-loader-syntax  when using ! at the start */
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q";
-const PLACES = "of-feb-25"; // name of mapbox style layer with photo metadata
+const PLACES: string = "of-feb-25"; // name of mapbox style layer with photo metadata
 
 // Set bounds to Ocean falls historic map only  ##TODO adjust bounds to tighter limits
-const BOUNDS = [
+const BOUNDS : number[][] = [
   [-127.7312, 52.3416], // Southwest coordinates
   [-127.6732, 52.3677], // Northeast coordinates
 ];
