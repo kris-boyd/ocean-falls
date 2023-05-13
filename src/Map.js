@@ -64,21 +64,19 @@ export default function Map({ onPopupImageClick }) {
       Create a popup, specify its options 
       and properties, and add it to the map.
     */
+
+      if (feature.properties.fileName) {
+        popup.setHTML(
+          `<p>click image to enlarge</p>
+          <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>
+          <h3>${feature.properties.description}</h3>`
+        );
+      } else {
+        popup.setHTML(`<h3>${feature.properties.description}</h3>`);
+      }
       popup
         .setLngLat(feature.geometry.coordinates)
         .setMaxWidth("320px")
-        .setHTML(
-          `<div> 
-            
-            ${
-              feature.properties.fileName
-                ? `<p>click image to enlarge</p> 
-                <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>`
-                : ""
-            }
-            <h3>${feature.properties.description}</h3> 
-          <div>`
-        )
         .addTo(map.current);
 
       // open a modal to show large image when the marker is clicked
