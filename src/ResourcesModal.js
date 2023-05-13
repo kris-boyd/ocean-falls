@@ -9,18 +9,30 @@ export default function Resources(props) {
         <Modal.Title>Resources</Modal.Title>
       </Modal.Header>
       <Modal.Body className="aboutModal-body">
-        <p>
-          Chris and Kathleen have been working on this for a long time etc....
-        </p>
-
-        <hr />
-        <p>
-          This map was created from a combination of historical sources(get
-          summary from Chris). Each dot represents a photo, text, or video
-          connected to that location. Created by{" "}
-          <a href="http://mediumlight.com">Christopher Grabowski</a>, Kathleen
-          Flaherty and Kris Boyd
-        </p>
+        <p>Links will open in a new tab</p>
+        <a
+          href="https://www.facebook.com/groups/2377931937"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Ocean Falls Facebook Group
+        </a>
+        <br></br>
+        <a
+          href="https://search-bcarchives.royalbcmuseum.bc.ca/informationobject/browse?topLod=0&sort=relevance&query=ocean+falls "
+          target="_blank"
+          rel="noreferrer"
+        >
+          BC Archives Ocean Falls
+        </a>
+        <br></br>
+        <a
+          href="http://www.oceanfallsmuseum.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Oceanfallsmuseum.com
+        </a>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
