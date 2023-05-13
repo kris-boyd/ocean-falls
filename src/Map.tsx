@@ -1,24 +1,26 @@
 import React, { useRef, useEffect } from "react";
-import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl, { LngLatBoundsLike } from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import { Point } from "geojson";
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q";
 const PLACES = "of-feb-25"; // name of mapbox style layer with photo metadata
 
 // Set bounds to Ocean falls historic map only  ##TODO adjust bounds to tighter limits
-const BOUNDS = [
+const BOUNDS: LngLatBoundsLike = [
   [-127.7312, 52.3416], // Southwest coordinates
   [-127.6732, 52.3677], // Northeast coordinates
 ];
 
 export default function Map({ onPopupImageClick }) {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const map = useRef<null | mapboxgl.Map>(null);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
+    if (!mapContainer.current) return;
 
-    map.current = new mapboxgl.Map({
+    map.current =  new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/krisboyd/cl6leg7ea000w14mrkl03b1yn",
       center: [-127.6906, 52.3518], //starting position
@@ -41,46 +43,61 @@ export default function Map({ onPopupImageClick }) {
 
     // Change the cursor to a pointer when the mouse is over a marker on the style layer.
     map.current.on("mouseenter", PLACES, (e) => {
+      if (!map.current) return;
+
       map.current.getCanvas().style.cursor = "pointer";
     });
 
     //change the cursor back to default when it leaves
     map.current.on("mouseleave", PLACES, () => {
+      if (!map.current) return;
       map.current.getCanvas().style.cursor = "";
     });
 
     map.current.on("click", (event) => {
+      if (!map.current) return;
       // When the user clicks on a marker, get its information.
       const features = map.current.queryRenderedFeatures(event.point, {
         layers: [PLACES], // targeted layer
       });
+
       if (!features.length) {
         popup.remove();
+
         return;
       }
+
       const feature = features[0];
+      const geometry = feature.geometry as unknown as Point;
       console.log(feature);
+      /*
+        _geometry: Object { type: "Point", coordinates: (2) […] }
+      */
+
       /* 
-      Create a popup, specify its options 
-      and properties, and add it to the map.
-    */
+        Create a popup, specify its options 
+        and properties, and add it to the map.
+      */
       popup
-        .setLngLat(feature.geometry.coordinates)
+        .setLngLat(geometry.coordinates as mapboxgl.LngLatLike)
         .setHTML(
           `<img  src="${feature.properties.imageUrl}" style="width:200px" class="popupImage"/>
       <h3>${feature.properties.description}</h3>`
         )
         .addTo(map.current);
 
-      // open a modal to show large image when the marker is clicked
-      document.querySelector(".popupImage").addEventListener("click", () => {
-        onPopupImageClick(feature);
-      });
+        // open a modal to show large image when the marker is clicked
+        document.querySelector(".popupImage").addEventListener("click", () => {
+          onPopupImageClick(feature);
+        });
     });
   }, [onPopupImageClick]);
 
   return (
-    <div ref={mapContainer} className="map-container">
+    <div ref={
+      (ref) => {
+        mapContainer.current = ref;
+    }} className="map-container">
       {" "}
     </div>
   );
