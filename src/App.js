@@ -46,11 +46,11 @@ export default function App() {
       <StaticMap width={width} height={height}></StaticMap>
       <Map onPopupImageClick={openImageModal}></Map>
       <Button
-        className="button-about position-absolute top-0 end-0 mt-2 me-2"
+        className="button-resources position-absolute top-0 end-0 mt-2 me-2"
         variant="primary"
         onClick={openAboutModal}
       >
-        About
+        Resources
       </Button>
 
       <WelcomeModal />
