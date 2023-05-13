@@ -3,7 +3,7 @@ import Map from "./Map.js";
 import WelcomeModal from "./WelcomeModal.js";
 import ImageModal from "./ImageModal.js";
 import Button from "react-bootstrap/Button";
-import AboutModal from "./AboutModal";
+import ResourcesModal from "./ResourcesModal.js";
 import StaticMap from "./StaticMap.js";
 import useWindowDimensions from "./useWindowDimensions";
 import optimizedDimensions from "./optimizedDimensions";
@@ -16,7 +16,7 @@ export default function App() {
   const [modalTag1, setModalTag1] = React.useState("");
 
   //AboutModal state
-  const [aboutModalShow, setAboutModalShow] = React.useState(false);
+  const [resourcesModalShow, setResourcesModalShow] = React.useState(false);
 
   const openImageModal = (feature) => {
     const clickFeature = feature;
@@ -35,8 +35,8 @@ export default function App() {
     height: originalHeight,
   });
 
-  const openAboutModal = () => {
-    setAboutModalShow(true);
+  const openResourcesModal = () => {
+    setResourcesModalShow(true);
   };
 
   // TODO: split mapbox into its own child component
@@ -48,7 +48,7 @@ export default function App() {
       <Button
         className="button-resources position-absolute top-0 end-0 mt-2 me-2"
         variant="primary"
-        onClick={openAboutModal}
+        onClick={openResourcesModal}
       >
         Resources
       </Button>
@@ -61,9 +61,9 @@ export default function App() {
         tag1={modalTag1}
         onHide={() => setModalShow(false)}
       />
-      <AboutModal
-        show={aboutModalShow}
-        onHide={() => setAboutModalShow(false)}
+      <ResourcesModal
+        show={resourcesModalShow}
+        onHide={() => setResourcesModalShow(false)}
       />
     </div>
   );

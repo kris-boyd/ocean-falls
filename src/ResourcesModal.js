@@ -2,11 +2,11 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export default function About(props) {
+export default function Resources(props) {
   return (
     <Modal {...props} size="lg" aria-labelledby="About" centered>
       <Modal.Header closeButton>
-        <Modal.Title>About this project</Modal.Title>
+        <Modal.Title>Resources</Modal.Title>
       </Modal.Header>
       <Modal.Body className="aboutModal-body">
         <p>
