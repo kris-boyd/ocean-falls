@@ -111,6 +111,7 @@ export default function Map({ onPopupImageClick }: IProps) {
       }
 
       addPopup(popup, feature, map.current, onPopupImageClick);
+
     });
   }, [onPopupImageClick]);
 

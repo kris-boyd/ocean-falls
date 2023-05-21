@@ -3,7 +3,7 @@ import Map from "./Map";
 import WelcomeModal from "./WelcomeModal";
 import ImageModal from "./ImageModal";
 import Button from "react-bootstrap/Button";
-import AboutModal from "./AboutModal";
+import ResourcesModal from "./ResourcesModal";
 import StaticMap from "./StaticMap";
 import useWindowDimensions from "./useWindowDimensions";
 import optimizedDimensions from "./optimizedDimensions";
@@ -16,7 +16,7 @@ export default function App(): JSX.Element {
   const [modalTag1, setModalTag1] = React.useState("");
 
   //AboutModal state
-  const [aboutModalShow, setAboutModalShow] = React.useState(false);
+  const [resourcesModalShow, setResourcesModalShow] = React.useState(false);
 
   const openImageModal = (feature: mapboxgl.MapboxGeoJSONFeature): void => {
     if (!feature.properties) {
@@ -24,7 +24,7 @@ export default function App(): JSX.Element {
     }
 
     setModalShow(true);
-    setModalImage(feature.properties.imageUrl);
+    setModalImage(feature.properties.fileName);
     setModalDescription(feature.properties.description);
     setModalTag1(feature.properties.tag1);
   };
@@ -37,8 +37,8 @@ export default function App(): JSX.Element {
     height: originalHeight,
   });
 
-  const openAboutModal = () => {
-    setAboutModalShow(true);
+  const openResourcesModal = () => {
+    setResourcesModalShow(true);
   };
 
   // TODO: split mapbox into its own child component
@@ -48,11 +48,11 @@ export default function App(): JSX.Element {
       <StaticMap width={width} height={height}></StaticMap>
       <Map onPopupImageClick={openImageModal}></Map>
       <Button
-        className="button-about position-absolute top-0 end-0 mt-2 me-2"
+        className="button-resources position-absolute top-0 end-0 mt-2 me-2"
         variant="primary"
-        onClick={openAboutModal}
+        onClick={openResourcesModal}
       >
-        About
+        Resources
       </Button>
 
       <WelcomeModal />
@@ -63,9 +63,9 @@ export default function App(): JSX.Element {
         tag1={modalTag1}
         onHide={() => setModalShow(false)}
       />
-      <AboutModal
-        show={aboutModalShow}
-        onHide={() => setAboutModalShow(false)}
+      <ResourcesModal
+        show={resourcesModalShow}
+        onHide={() => setResourcesModalShow(false)}
       />
     </div>
   );

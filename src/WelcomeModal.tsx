@@ -9,12 +9,13 @@ function VerticallyCenteredModal(props: IWelcomeProps): JSX.Element {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      backdropClassName="transparent-backdrop"
     >
       <Modal.Header closeButton>
         <Modal.Title>Ocean Falls: the memory of a community</Modal.Title>
       </Modal.Header>
-      <Modal.Body className="welcomeModal-body">
-        <Image src={bannerImage} fluid></Image>
+      <Modal.Body className="welcome-modal-body">
+        <Image className="welcome-modal-image" src={bannerImage} fluid></Image>
         <h4>A community is a place and an idea.</h4>
         <p>
           Ocean Falls was a company town created in 1909 around a paper mill at
@@ -45,7 +46,9 @@ function VerticallyCenteredModal(props: IWelcomeProps): JSX.Element {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Start Exploring</Button>
+        <Button className="welcome-modal-button" onClick={props.onHide}>
+          Start Exploring
+        </Button>
       </Modal.Footer>
     </Modal>
   );
