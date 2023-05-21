@@ -5,8 +5,8 @@ import ImageModal from "./ImageModal.js";
 import Button from "react-bootstrap/Button";
 import ResourcesModal from "./ResourcesModal.js";
 import StaticMap from "./StaticMap.js";
-import useWindowDimensions from "./useWindowDimensions";
-import optimizedDimensions from "./optimizedDimensions";
+import useWindowDimensions from "./useWindowDimensions.js";
+import optimizedDimensions from "./optimizedDimensions.js";
 
 export default function App() {
   //ImageModal state
