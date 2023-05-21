@@ -1,7 +1,7 @@
 // 1280 is the max value accepted by mapbox static API
 const MAPBOX_SIZE_LIMIT = 1280;
 
-const optimizedDimensions = ({ width, height }) => {
+const optimizedDimensions = ({ width, height }: IDimension): IDimension => {
   const ratio = width / height;
 
   if (width > MAPBOX_SIZE_LIMIT) {
@@ -13,6 +13,7 @@ const optimizedDimensions = ({ width, height }) => {
     height = MAPBOX_SIZE_LIMIT;
     width = Math.round(height * ratio);
   }
+
   return { width, height };
 };
 

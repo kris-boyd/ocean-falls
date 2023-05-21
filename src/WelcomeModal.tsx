@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button, Image } from "react-bootstrap";
 import bannerImage from "./images/ariel_cu_banner.jpg";
 
-function VerticallyCenteredModal(props) {
+function VerticallyCenteredModal(props: IWelcomeProps): JSX.Element {
   return (
     <Modal
       {...props}
@@ -53,7 +53,7 @@ function VerticallyCenteredModal(props) {
     </Modal>
   );
 }
-function Welcome2() {
+function Welcome2(): JSX.Element {
   const [modalShow, setModalShow] = React.useState(true);
 
   return (

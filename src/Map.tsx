@@ -1,6 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import mapboxgl, { LngLatBoundsLike } from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl, { LngLatBoundsLike, MapboxGeoJSONFeature, Popup, LngLatLike } from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import { Point } from "geojson";
+
+interface IProps {
+  onPopupImageClick: (feature: MapboxGeoJSONFeature) => void;
+}
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoia3Jpc2JveWQiLCJhIjoiY2w2azVpcXdxMTlyMDNjbzJ5dWIxODZxaSJ9.-WDtw9QaqwiPtZyokBre6Q";
@@ -12,7 +16,44 @@ const BOUNDS: LngLatBoundsLike = [
   [-127.6732, 52.3677], // Northeast coordinates
 ];
 
-export default function Map({ onPopupImageClick }) {
+function addPopup(popup: Popup, feature: MapboxGeoJSONFeature, map: mapboxgl.Map, onPopupImageClick: IProps['onPopupImageClick']) {
+    const geometry = feature.geometry as unknown as Point;
+    console.log(feature);
+    /*
+      _geometry: Object { type: "Point", coordinates: (2) […] }
+    */
+
+    /* 
+      Create a popup, specify its options 
+      and properties, and add it to the map.
+    */
+    if (feature.properties) {
+      const imageHtml = `<p>click image to enlarge</p>
+        <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>`
+      const descriptionHtml = `<h3>${feature.properties.description}</h3>`;
+
+      const popupHtml = feature.properties.fileName ? imageHtml + descriptionHtml : descriptionHtml;
+
+      popup.setHTML(popupHtml);
+
+      popup
+        .setLngLat(geometry.coordinates as LngLatLike)
+        .setMaxWidth("320px")
+        .addTo(map);
+    }
+ 
+    // open a modal to show large image when the marker is clicked
+    const popupImage = document.querySelector(".popupImage") as HTMLElement | null
+
+    if (popupImage) {
+      popupImage.addEventListener("click", () => {
+        onPopupImageClick(feature);
+      });
+    }
+  };
+
+
+export default function Map({ onPopupImageClick }: IProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<null | mapboxgl.Map>(null);
 
@@ -61,49 +102,16 @@ export default function Map({ onPopupImageClick }) {
         layers: [PLACES], // targeted layer
       });
 
-      if (!features.length) {
+      const feature = features[0];
+
+      if (!feature) {
         popup.remove();
 
         return;
       }
 
-      const feature = features[0];
-      const geometry = feature.geometry as unknown as Point;
-      console.log(feature);
-      /*
-        _geometry: Object { type: "Point", coordinates: (2) […] }
-      */
+      addPopup(popup, feature, map.current, onPopupImageClick);
 
-      /* 
-        Create a popup, specify its options 
-        and properties, and add it to the map.
-      */
-  
-
-         /*  with conditionals */
-         if (feature.properties) {
-          if (feature.properties.fileName) {
-            popup.setHTML(
-              `<p>click image to enlarge</p>
-              <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>
-              <h3>${feature.properties.description}</h3>`
-            );
-          } else {
-            popup.setHTML(`<h3>${feature.properties.description}</h3>`);
-          }
-          popup
-            .setLngLat(geometry.coordinates as mapboxgl.LngLatLike)
-            .setMaxWidth("320px")
-            .addTo(map.current);
-         }
-       
-          // open a modal to show large image when the marker is clicked
-         const popupImage = document.querySelector(".popupImage") as HTMLElement | null
-         if (popupImage) {
-          popupImage.addEventListener("click", () => {
-            onPopupImageClick(feature);
-         });
-        }
     });
   }, [onPopupImageClick]);
 

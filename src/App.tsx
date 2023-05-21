@@ -1,14 +1,14 @@
 import React from "react";
-import Map from "./Map.js";
-import WelcomeModal from "./WelcomeModal.js";
-import ImageModal from "./ImageModal.js";
+import Map from "./Map";
+import WelcomeModal from "./WelcomeModal";
+import ImageModal from "./ImageModal";
 import Button from "react-bootstrap/Button";
-import ResourcesModal from "./ResourcesModal.js";
-import StaticMap from "./StaticMap.js";
-import useWindowDimensions from "./useWindowDimensions.js";
-import optimizedDimensions from "./optimizedDimensions.js";
+import ResourcesModal from "./ResourcesModal";
+import StaticMap from "./StaticMap";
+import useWindowDimensions from "./useWindowDimensions";
+import optimizedDimensions from "./optimizedDimensions";
 
-export default function App() {
+export default function App(): JSX.Element {
   //ImageModal state
   const [modalShow, setModalShow] = React.useState(false);
   const [modalImage, setModalImage] = React.useState("");
@@ -18,13 +18,15 @@ export default function App() {
   //AboutModal state
   const [resourcesModalShow, setResourcesModalShow] = React.useState(false);
 
-  const openImageModal = (feature) => {
-    const clickFeature = feature;
+  const openImageModal = (feature: mapboxgl.MapboxGeoJSONFeature): void => {
+    if (!feature.properties) {
+      return;
+    }
 
     setModalShow(true);
-    setModalImage(clickFeature.properties.fileName);
-    setModalDescription(clickFeature.properties.description);
-    setModalTag1(clickFeature.properties.tag1);
+    setModalImage(feature.properties.fileName);
+    setModalDescription(feature.properties.description);
+    setModalTag1(feature.properties.tag1);
   };
 
   // get width and height of the viewport

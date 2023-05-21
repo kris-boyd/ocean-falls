@@ -1,13 +1,17 @@
 TODO
 
 - complete skipped tests
-- optimize image delivery
+
 - create server to allow content additions
 
 - improve styling of ImageModal
-- set boundaries to show only custom map
-- get updated content for AboutModal
+
 - update content on WelcomeModal
+
+- server use cases:
+  upload new image
+  add description to image
+  user log in
 
 DONE
 
@@ -17,3 +21,5 @@ DONE
 - create automated tests for Optimized
 - make map container into react component
 - add banner image to WelcomeModal
+- optimize image delivery
+- get updated content for AboutModal
