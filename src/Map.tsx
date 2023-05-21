@@ -78,18 +78,30 @@ export default function Map({ onPopupImageClick }) {
         Create a popup, specify its options 
         and properties, and add it to the map.
       */
+     /*  with conditionals */
+     if (feature.properties) {
+      if (feature.properties.fileName) {
+        popup.setHTML(
+          `<p>click image to enlarge</p>
+          <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>
+          <h3>${feature.properties.description}</h3>`
+        );
+      } else {
+        popup.setHTML(`<h3>${feature.properties.description}</h3>`);
+      }
       popup
         .setLngLat(geometry.coordinates as mapboxgl.LngLatLike)
-        .setHTML(
-          `<img  src="${feature.properties.imageUrl}" style="width:200px" class="popupImage"/>
-      <h3>${feature.properties.description}</h3>`
-        )
+        .setMaxWidth("320px")
         .addTo(map.current);
-
-        // open a modal to show large image when the marker is clicked
-        document.querySelector(".popupImage").addEventListener("click", () => {
-          onPopupImageClick(feature);
-        });
+     }
+   
+      // open a modal to show large image when the marker is clicked
+     const popupImage = document.querySelector(".popupImage") as HTMLElement | null
+     if (popupImage) {
+      popupImage.addEventListener("click", () => {
+        onPopupImageClick(feature);
+     });
+    }
     });
   }, [onPopupImageClick]);
 
