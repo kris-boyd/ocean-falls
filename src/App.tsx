@@ -18,13 +18,15 @@ export default function App(): JSX.Element {
   //AboutModal state
   const [aboutModalShow, setAboutModalShow] = React.useState(false);
 
-  const openImageModal = (feature: IFeature): void => {
-    const clickFeature: IFeature = feature;
+  const openImageModal = (feature: mapboxgl.MapboxGeoJSONFeature): void => {
+    if (!feature.properties) {
+      return;
+    }
 
     setModalShow(true);
-    setModalImage(clickFeature.properties.imageUrl);
-    setModalDescription(clickFeature.properties.description);
-    setModalTag1(clickFeature.properties.tag1);
+    setModalImage(feature.properties.imageUrl);
+    setModalDescription(feature.properties.description);
+    setModalTag1(feature.properties.tag1);
   };
 
   // get width and height of the viewport
