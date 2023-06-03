@@ -30,9 +30,9 @@ function addPopup(popup: Popup, feature: MapboxGeoJSONFeature, map: mapboxgl.Map
     if (feature.properties) {
       const imageHtml = `<p>click image to enlarge</p>
         <img src="https://res.cloudinary.com/daqq3q1oz/image/upload/t_popup_280/${feature.properties.fileName}" style="width:280px" class="popupImage"/>`
-      const descriptionHtml = `<h3>${feature.properties.description}</h3>`;
-
-      const popupHtml = feature.properties.fileName ? imageHtml + descriptionHtml : descriptionHtml;
+      const titleHtml = `<h3>${feature.properties.title}</h3>`;
+      const textHtml = `<p>${feature.properties.text}</p>`;
+      const popupHtml = feature.properties.fileName ? imageHtml + titleHtml : textHtml;
 
       popup.setHTML(popupHtml);
 
