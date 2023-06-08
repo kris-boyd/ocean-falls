@@ -12,7 +12,7 @@ export default function ImageModal(props: IImageProps): JSX.Element {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="ms-auto">
-          {props.tag1}
+          {props.title}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
@@ -21,7 +21,7 @@ export default function ImageModal(props: IImageProps): JSX.Element {
         }}
       ></Modal.Body>
       <Modal.Footer>
-        <p> {props.description}</p>
+        <p> {props.text}</p>
       </Modal.Footer>
     </Modal>
   );

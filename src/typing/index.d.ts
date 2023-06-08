@@ -13,17 +13,17 @@ interface IWelcomeProps {
   onHide: () => void;
 }
 interface IImageProps {
-  description: string;
+  title: string;
   image: string;
   show: boolean;
-  tag1: string;
+  text: string;
   onHide: () => void;
 }
 interface IFeature {
   properties: {
     imageUrl: string;
-    description: string;
-    tag1: string;
+    title: string;
+    text: string;
   }
 }
 

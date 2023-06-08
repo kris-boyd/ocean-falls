@@ -12,8 +12,8 @@ export default function App(): JSX.Element {
   //ImageModal state
   const [modalShow, setModalShow] = React.useState(false);
   const [modalImage, setModalImage] = React.useState("");
-  const [modalDescription, setModalDescription] = React.useState("");
-  const [modalTag1, setModalTag1] = React.useState("");
+  const [modalText, setModalText] = React.useState("");
+  const [modalTitle, setModalTitle] = React.useState("");
 
   //AboutModal state
   const [resourcesModalShow, setResourcesModalShow] = React.useState(false);
@@ -25,8 +25,8 @@ export default function App(): JSX.Element {
 
     setModalShow(true);
     setModalImage(feature.properties.fileName);
-    setModalDescription(feature.properties.description);
-    setModalTag1(feature.properties.tag1);
+    setModalText(feature.properties.text);
+    setModalTitle(feature.properties.title);
   };
 
   // get width and height of the viewport
@@ -59,8 +59,8 @@ export default function App(): JSX.Element {
       <ImageModal
         show={modalShow}
         image={modalImage}
-        description={modalDescription}
-        tag1={modalTag1}
+        text={modalText}
+        title={modalTitle}
         onHide={() => setModalShow(false)}
       />
       <ResourcesModal
