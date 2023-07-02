@@ -5,8 +5,13 @@ TODO
 - create server to allow content additions
 
 - improve styling of ImageModal
-
-- update content on WelcomeModal
+- remove static map and optimized dimensions
+- improve popup positioning so it doesn't go offscreen
+- improve text only display
+- make video "how to add photos to Cloudinary"
+- make video "howw to add new point to map"
+- update Mapbox payment info
+- connect Netlify to custom domain
 
 - server use cases:
   upload new image
@@ -23,3 +28,4 @@ DONE
 - add banner image to WelcomeModal
 - optimize image delivery
 - get updated content for AboutModal
+- update content on WelcomeModal
