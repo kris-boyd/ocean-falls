@@ -6,7 +6,7 @@ TODO
 
 - improve styling of ImageModal
 - remove static map and optimized dimensions
-- improve popup positioning so it doesn't go offscreen
+- improve popup positioning so it doesn't go offscreen - delay popup creation until image fetched
 - improve text only display
 - make video "how to add photos to Cloudinary"
 - make video "howw to add new point to map"

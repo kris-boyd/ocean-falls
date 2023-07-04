@@ -16,12 +16,12 @@ const BOUNDS: LngLatBoundsLike = [
   [-127.6732, 52.3677], // Northeast coordinates
 ];
 
+
+
 function addPopup(popup: Popup, feature: MapboxGeoJSONFeature, map: mapboxgl.Map, onPopupImageClick: IProps['onPopupImageClick']) {
     const geometry = feature.geometry as unknown as Point;
     console.log(feature);
-    /*
-      _geometry: Object { type: "Point", coordinates: (2) […] }
-    */
+    /* _geometry: Object { type: "Point", coordinates: (2) […] } */
 
     /* 
       Create a popup, specify its options 
